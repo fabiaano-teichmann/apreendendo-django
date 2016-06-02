@@ -1,0 +1,22 @@
+
+{% extends 'app2/base.html'%}
+{%block links%}
+<nav>
+	<h1>Links para app1</h1>
+	<ul>
+		<li><a href="{% url 'ola_mundo' %}">Olá Mundo</a></li>
+		<li><a href="{% url 'data_hora' %}">Acessar Hora e Data</a></li>
+		<li><a href="{%url 'status_code'%}">Estatus da pagina</a></li>
+
+	</ul>
+</nav>
+{% endblock links%}
+
+{%block div%}
+
+<div>
+	<p> Olá {{nome}}</p>
+
+
+</div>
+{%endblock div%}

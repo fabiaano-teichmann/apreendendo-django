@@ -1,0 +1,36 @@
+{% extends 'app2/base.html'%}
+{% block links %}
+<nav>
+	<h1>Links para app1</h1>
+	<ul>
+		<li><a href="{% url 'ola_mundo' %}">Olá Mundo</a></li>
+		<li><a href="{% url 'data_hora' %}">Acessar Hora e Data</a></li>
+		<li><a href="{%url 'status_code'%}">Estatus da pagina</a></li>
+		<li><a href="{%url 'perfil' %}">Perfil</a></li>
+	</ul>
+</nav>
+{% endblock links%}
+
+{%block conteudo%}
+<div>
+	<h1>Bem Vindo {{nome}}</h1>
+	<p>Nome em caixa alta:{{nome|upper}}</p>
+	<p>Ultimo Acesso: {{data}}</p>
+
+</div>
+<div>
+	<h3>Itens na agenda(vaviável Lista)</h3>
+	<ol>
+		<li>{{lista}}</li>
+	</ol>
+</div>
+<div>
+	<h3>Intens da agenda(variável lista + tag for)</h3>
+	<ol>
+		{% for l in lista %}
+		<li>{{l}}</li>
+		{% endfor %}
+	</ol>
+
+</div>
+{%endblock conteudo%}
