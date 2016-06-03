@@ -1,7 +1,8 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
-from .models import Perfil
+from django.utils import timezone
+from .models import Perfil, Post
 import datetime
 
 # Create your views here.
@@ -13,7 +14,13 @@ def index(request):
 	# estamos retornando/ enviando(return) e entregando /montando (render) para a requisição 
 	#foi feita (request) o arquivo 'app2/index.html
 
-def perfil(Perfil):
-	nome = perfil.nome
+def perfil(request):
+	perfis = Perfil.objects.all()
 	
-	return render(request, 'app2/perfil.html', {'nome': nome})
+	return render(request, 'app2/perfil.html', {'perfis': perfis})
+
+def post_list(request):
+	
+	posts = Post.objects.filter(publish_date__lte=timezone.now()).order_by('publish_date')
+
+	return render(request, 'app2/post_list.html', {'posts': posts})

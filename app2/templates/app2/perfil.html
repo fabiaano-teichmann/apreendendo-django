@@ -13,9 +13,22 @@
 {% endblock links%}
 
 {%block div%}
+{% for perfil in perfis%}
+<table>
+<tr>
+	<td>{{perfil.nome}}</td>
+	<td>{{perfil.sobre_nome}}</td>
+</tr>
+<tr>
+	<td>{{perfil.genero}}</td>
+	<td>{{perfil.facebook}}</td>
+</tr>
 
+	
+</table>
+{%endfor%}
 <div>
-	<p> Olá {{nome}}</p>
+	<p> Olá {{perfil.name}}</p>
 
 
 </div>

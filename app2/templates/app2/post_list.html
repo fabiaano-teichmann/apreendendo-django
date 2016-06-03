@@ -1,0 +1,17 @@
+{% extends 'app2/base.html'%}
+{% block links %}
+
+{% endblock links%}
+
+{%block post%}
+
+{% for post in posts%}
+<div>
+	<p>Publicado: {{post.publish_date}}</p>
+	<h1><a href="">{{post.title}} </a></h1>
+	<p>{{post.text}}</p>
+</div>
+
+{%endfor%}
+
+{%endblock post%}
