@@ -3,32 +3,45 @@
 {%block links%}
 <nav>
 	<h1>Links para app1</h1>
-	<ul>
-		<li><a href="{% url 'ola_mundo' %}">Olá Mundo</a></li>
-		<li><a href="{% url 'data_hora' %}">Acessar Hora e Data</a></li>
-		<li><a href="{%url 'status_code'%}">Estatus da pagina</a></li>
+	<nav>
+		<ul class="nav nav-pills">
+			<li><a class="btn btn-default" href="{% url 'ola_mundo' %}">Olá Mundo</a></li>
+			<li><a class="btn btn-default" href="{% url 'data_hora' %}">Acessar Hora e Data</a></li>
+			<li><a class="btn btn-default" href="{%url 'status_code'%}">Estatus da pagina</a></li>
 
-	</ul>
+		</ul>
+	</nav>
 </nav>
+<hr>
 {% endblock links%}
 
 {%block div%}
+<h3>Perfil</h3>
 {% for perfil in perfis%}
-<table>
+<table class="table table-hover">
 <tr>
+	<td> Nome:</td>
 	<td>{{perfil.nome}}</td>
-	<td>{{perfil.sobre_nome}}</td>
+
 </tr>
 <tr>
-	<td>{{perfil.genero}}</td>
-	<td>{{perfil.facebook}}</td>
+	<td> Sobre nome:</td>
+	<td>{{perfil.sobre_nome}}</td>
+</tr>
+	<tr>
+		<td>Genero:</td>
+		<td>{{perfil.genero}}</td>
+	</tr>
+<tr>
+	<td>Pagina Facebook</td>
+	<td> {{perfil.facebook}}  </td>
 </tr>
 
 	
 </table>
 {%endfor%}
 <div>
-	<p> Olá {{perfil.name}}</p>
+
 
 
 </div>
