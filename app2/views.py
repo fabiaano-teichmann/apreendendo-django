@@ -22,5 +22,11 @@ def perfil(request):
 def post_list(request):
 	
 	posts = Post.objects.filter(publish_date__lte=timezone.now()).order_by('publish_date')
+	
+		#html = "<html> <body><h1> {{post.title}}</h1> <br> <p> {{post.text}} </body></html>"
+		#url_post = post.title.replace(" ", "-")
+
 
 	return render(request, 'app2/post_list.html', {'posts': posts})
+		
+	

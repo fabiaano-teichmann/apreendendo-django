@@ -15,7 +15,7 @@ class Perfil(models.Model):
 	favorito = models.BooleanField('Favorito:')
 	def __str__(self):
 		return self.nome
-class Post (models.Model):
+class Post(models.Model):
     author = models.ForeignKey ('auth.User')
     title = models.CharField(max_length=200)
     text = models.TextField()
