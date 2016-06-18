@@ -1,29 +1,36 @@
-
+{% load staticfiles %}
 <html>
 <head>
-	{% load staticfiles%}
-
+	
 	<meta charset="utf-8">
 	<meta content="width= device-width, initial-scale = 1, maximum-scale=1" name="viewport">
 	<title>Meu primeiro app em Django</title>
-	<link rel="stylesheet"  href="{% static 'css/bootstrap.min.css' %}">
-	<link rel="stylesheet"  href="{% static 'css/bootstrap-theme.min.css' %}">
-	
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
 	
 </head>
 <body>
 	<div class="container">
-	{% block links %}	
+	<div id="links">
+		{% block links %}	
 	{% endblock links%}
-
+	</div>
+	
 	{%block div%}
 	{%endblock div%}
 
 	{%block conteudo%}
 	{%endblock conteudo%}
-
+	<div id="post"> 
 	{%block post%}
+
 	{%endblock post%}
+	</div>
+	<div id="post_detail">
+		{% block post_detail %}
+		{% endblock post_detail %}
+	</div>
 	</div>
 	<footer>Rodapé</footer>
 	

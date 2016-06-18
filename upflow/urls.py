@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^app1/',include('app1.urls')),
     url(r'^', include('app2.urls')),
     
+    
 ]

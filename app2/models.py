@@ -21,6 +21,7 @@ class Post(models.Model):
     text = models.TextField()
     create_date = models.DateTimeField(default=timezone.now)
     publish_date = models.DateTimeField(blank=True, null=True)
+    slug = models.SlugField(max_length=200, unique=True, verbose_name="Slug / URL", help_text="Preenchido automaticamente, não editar.",)
     def publish(self):
     	self.publish_date = timezone.now()
     	self.save()
