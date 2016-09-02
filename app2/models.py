@@ -17,11 +17,13 @@ class Perfil(models.Model):
 		return self.nome
 class Post(models.Model):
     author = models.ForeignKey ('auth.User')
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    create_date = models.DateTimeField(default=timezone.now)
-    publish_date = models.DateTimeField(blank=True, null=True)
-    slug = models.SlugField(max_length=200, unique=True, verbose_name="Slug / URL", help_text="Preenchido automaticamente, não editar.",)
+    #pode se criar o campo em ingles padronizado internacionalmente e colocar em potugues
+    title = models.CharField('Titulo', max_length=200)
+    text = models.TextField('Texto')
+    create_date = models.DateTimeField('Data de criação',default=timezone.now)
+    publish_date = models.DateTimeField('Data para publicar',blank=True, null=True)
+    slug = models.SlugField(max_length=200, editable=True)
+    #
     def publish(self):
     	self.publish_date = timezone.now()
     	self.save()

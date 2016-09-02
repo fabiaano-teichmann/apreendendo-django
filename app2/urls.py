@@ -1,10 +1,11 @@
-from django.conf.urls import url
+from django.conf.urls import url, include , patterns
 from .import views
 urlpatterns = [
 url(r'^$',views.index, name = 'index'), 
 url(r'^perfil/', views.perfil, name= 'perfil'),
-url(r'^post_list/', views.post_list, name= 'blog'),
-url(r'^$', views.post_list),
-url(r'^blog/(?P<pk>[0-9]+)/$', views.post_detail)
+url(r'^listar/', views.listar, name= 'listar'),
+	
+url(r'^blog/(?P<slug>[a-z]+)/$', views.post_detail),
+url(r'^post_new/$', views.post_new, name='post_new')
 ]
 #https://docs.djangoproject.com/en/1.9/topics/http/urls/

@@ -1,11 +1,15 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import  render
+#from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
-from django.core.urlresolvers import reverse
+#from django.core.urlresolvers import reverse
 from django.utils import timezone
 from .models import Perfil, Post
+from .forms import PostForm
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic import CreateView, ListView
 import datetime
 
-# Create your views here.
 def index(request):
 	nome = 'Fabiano Teichamnn'
 	data = datetime.datetime.now()
@@ -19,13 +23,31 @@ def perfil(request):
 	
 	return render(request, 'app2/perfil.html', {'perfis': perfis})
 
-def post_list(request):
+def listar(request):
 	
 	posts = Post.objects.filter(publish_date__lte=timezone.now()).order_by('publish_date')
 	
-	return render(request, 'app2/post_list.html', {'posts': posts})
-def post_detail(request, pk):
-	post = get_object_or_404(Post, pk=pk)
+	return render(request, 'app2/listar.html', {'posts': posts})
+
+
+
+
+def post_detail(request, slug):
+	post = get_object_or_404(Post, slug=slug)
 	return render (request, 'app2/post_detail.html', {'post': post})
+
+def post_new(request):
+	if request.method == "POST":
+		form = PostForm(request.POST)
+		if form.is_valid():
+			post = form.save(commit=False)
+			post.author = request.user
+			post.publish_date = timezone.now()
+			post.save()
+			return redirect('app2.view.post_detail', slug=post.slug)
+		else:
+			form = PostForm()	
+		return render(request, 'app2/post_edit.html', {'form': form})
+
 
 	
