@@ -16,7 +16,7 @@ class PostAdmin(admin.ModelAdmin):
 	save_on_top = True
 	list_display = ('author', 'title', 'publish_date')
 	list_filter = ('author', 'title') 
-
+	prepopulated_fields = {'slug': ("title",)} # preencher automáticamente slug baseado no título
 class MetaPost:
 	model = Post
 	admin.site.register(Post, PostAdmin)

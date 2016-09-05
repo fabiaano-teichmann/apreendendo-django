@@ -11,21 +11,24 @@
 	
 </head>
 <body>
-	<div class="container">
-	<nav>
-	<h1>Menu</h1>
-	<ul>
-		<li><a href="{% url 'ola_mundo' %}"class="top-menu">Olá Mundo</a></li>
-		<li><a href="{% url 'data_hora' %}"class="top-menu">Acessar Hora e Data</a></li>
-		<li><a href="{%url 'status_code'%}" class="top-menu">Estatus da pagina</a></li>
-		<li><a href="{%url 'perfil' %}">Perfil</a></li>
-		<li><a href="{% url 'app2.views.post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Adicionar Post</a></li>
-	</ul>
-</nav>
+<div class="container">
+	{% for post in posts%}
+	<nav class="navbar nabar-default">
+		<div class="navbar-header">
+		<div class="btn-group" role="group">
+			<button type="button" class="btn btn-success"><a href=blog/{{post.slug}}>{{ post.title }}</a></button>
+		</div>
+		</div>
+	</nav>				
+	{%endfor%}
+				
+			
+
+<div>
 	
 	{%block div%} 	{%endblock div%}
 
-	{%block conteudo%} 	{%endblock conteudo%}
+	{%block index%} 	{%endblock index%}
 	<div id="post"> 
 	{%block post%}
 
