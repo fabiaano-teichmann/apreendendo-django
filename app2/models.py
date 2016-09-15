@@ -31,6 +31,9 @@ class Post(models.Model):
     	return self.title
     	
 
-
+class Img(models.Model):
+    title = models.CharField('Titulo da Imagen', max_length=150)
+    id_img = models.ForeignKey('Post', on_delete=models.CASCADE,)
+    img = models.ImageField(upload_to='static/img')
 
 

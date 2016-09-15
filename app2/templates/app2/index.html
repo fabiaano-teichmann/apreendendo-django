@@ -1,7 +1,32 @@
 {% extends 'app2/base.html'%}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css'%}">
+	<link rel="stylesheet"  href="{% static 'css/styles.css'%}">
+</head>
+<body>
+<img src="" alt="">
+
 
 {% block  index %}
-#selecionar um artigo para que seja o home
+{% for img in imgs %}
+{% if img.id_img == "loren"%}
+<p> blalala </p>
+{% endif %}
+{% endfor%}
 
+{% for post in posts %}
+{% if post.slug == "lorem"%}
+<h1>{{post.title}}</h1>
+<p> {{post.text |linebreaks}}<p>
 
+{% endif %}
+{% endfor%}
 {%endblock index %}
+</body>
+</html>

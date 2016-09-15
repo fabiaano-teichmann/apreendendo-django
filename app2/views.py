@@ -1,37 +1,22 @@
 from django.shortcuts import  render
-#from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
-#from django.core.urlresolvers import reverse
 from django.utils import timezone
-from .models import Perfil, Post
+from .models import  Post, Img
 from .forms import PostForm
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import CreateView, ListView
 import datetime
 
 def index(request):
-	
 	posts = Post.objects.filter(publish_date__lte=timezone.now()).order_by('publish_date')
-	
-	return render(request, 'app2/index.html', {'posts': posts})
+	imgs = Img.objects.all()
+	return render(request, 'app2/index.html', {'posts': posts, 'imgs': imgs})
 
-	
-	
-
-def perfil(request):
-	perfis = Perfil.objects.all()
-	
-	return render(request, 'app2/perfil.html', {'perfis': perfis})
 
 def listar(request):
-	
 	posts = Post.objects.filter(publish_date__lte=timezone.now()).order_by('publish_date')
-	
 	return render(request, 'app2/listar.html', {'posts': posts})
-
-
-
 
 def post_detail(request, slug):
 	post = get_object_or_404(Post, slug=slug)
